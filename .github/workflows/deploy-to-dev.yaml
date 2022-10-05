@@ -9,7 +9,7 @@ jobs:
     with:
       organization-name: Paul's Personal
       project-name: hello-qovery-basic
-      environment-name: hello-qovery-basic
+      environment-name: pipeline-test-env
       application-names: hello qovery pipeline
     secrets:
       api-token: ${{ secrets.QOVERY_API_TOKEN }}
