@@ -7,9 +7,9 @@ jobs:
   test-and-deploy:
     uses: ./.github/workflows/test-and-deploy.yaml
     with:
-      organization-name: Paul's Personal
-      project-name: hello-qovery-basic
-      environment-name: pipeline-test-env
-      application-names: hello qovery pipeline
+      qovery-organization-id: c0758a52-37d2-4245-a017-870e1d1f66a4
+      project-id: 9b3f7dcc-f2d2-46e2-8a6d-79d9c0ce6254
+      environment-id: b0e7ae45-1b94-4b0e-9fd6-448ca6a2313e
+      application-ids: 36d8ab5b-92e2-4470-a566-e0677d824c02
     secrets:
       api-token: ${{ secrets.QOVERY_API_TOKEN }}
