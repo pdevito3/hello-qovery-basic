@@ -16,7 +16,6 @@ on:
         required: true
 jobs:
   migrate:
-    environment: pipeline-test-env
     runs-on: ubuntu-latest
     strategy:
       matrix:
