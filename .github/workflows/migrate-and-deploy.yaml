@@ -1,4 +1,4 @@
-name: Deploy and Test on Qovery
+name: Migrate and Deploy on Qovery
 on:
   workflow_call:
     inputs:
@@ -26,12 +26,10 @@ jobs:
         uses: actions/setup-dotnet@v1.7.2
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
-      - name: Install dependencies
-        run: dotnet restore
-      - name: Build project
-        run: dotnet build --configuration Release --no-restore
-      - name: Run tests
-        run: dotnet test --no-restore --verbosity minimal
+      - name: Install EF
+        run: dotnet tool install --global dotnet-ef
+      - name: Run Migration
+        run: dotnet ef database update --project RecipeManagement/src/RecipeManagement
   deploy:
     needs: test
     runs-on: ubuntu-latest

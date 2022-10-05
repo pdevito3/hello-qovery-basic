@@ -4,8 +4,8 @@ on:
     branches:
       - main
 jobs:
-  test-and-deploy:
-    uses: ./.github/workflows/test-and-deploy.yaml
+  migrate-and-deploy:
+    uses: ./.github/workflows/migrate-and-deploy.yaml
     with:
       organization-id: c0758a52-37d2-4245-a017-870e1d1f66a4
       environment-id: b0e7ae45-1b94-4b0e-9fd6-448ca6a2313e
