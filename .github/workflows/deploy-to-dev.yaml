@@ -1,0 +1,15 @@
+name: Deploy to dev
+on:
+  push:
+    branches:
+      - main
+jobs:
+  test-and-deploy:
+    uses: ./.github/workflows/test-and-deploy.yaml
+    with:
+      organization-name: Paul's Personal
+      project-name: hello-qovery-basic
+      environment-name: hello-qovery-basic
+      application-names: hello qovery pipeline
+    secrets:
+      api-token: ${{ secrets.QOVERY_API_TOKEN }}
