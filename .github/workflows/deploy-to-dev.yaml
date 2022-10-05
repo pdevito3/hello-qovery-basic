@@ -12,3 +12,4 @@ jobs:
       application-ids: 36d8ab5b-92e2-4470-a566-e0677d824c02
     secrets:
       api-token: ${{ secrets.QOVERY_API_TOKEN }}
+      DB_CONNECTION_STRING: ${{ secrets.DB_CONNECTION_STRING }}

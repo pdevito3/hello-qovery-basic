@@ -15,7 +15,8 @@ on:
       api-token:
         required: true
 jobs:
-  test:
+  migrate:
+    environment: pipeline-test-env
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -30,8 +31,10 @@ jobs:
         run: dotnet tool install --global dotnet-ef
       - name: Run Migration
         run: dotnet ef database update --project RecipeManagement/src/RecipeManagement
+        with:
+          DB_CONNECTION_STRING: ${{ secrets.db-connection-string }}
   deploy:
-    needs: test
+    needs: migrate
     runs-on: ubuntu-latest
     name: Deploy on Qovery
     steps:
