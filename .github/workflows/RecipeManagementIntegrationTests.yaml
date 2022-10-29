@@ -19,7 +19,6 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet build --configuration Release --no-restore
-      - name: Go to Integration Tests
-        run: cd RecipeManagement/tests/RecipeManagement.IntegrationTests
       - name: Test
+        working-directory: RecipeManagement/tests/RecipeManagement.IntegrationTests
         run: dotnet test --no-restore --verbosity minimal

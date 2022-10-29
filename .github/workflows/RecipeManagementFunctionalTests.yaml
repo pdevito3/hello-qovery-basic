@@ -19,7 +19,6 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet build --configuration Release --no-restore
-      - name: Go to Functional Tests
-        run: cd RecipeManagement/tests/RecipeManagement.FunctionalTests
       - name: Test
+        working-directory: RecipeManagement/tests/RecipeManagement.FunctionalTests
         run: dotnet test --no-restore --verbosity minimal
