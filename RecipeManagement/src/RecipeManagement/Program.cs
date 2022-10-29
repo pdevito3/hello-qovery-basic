@@ -1,3 +1,4 @@
+using RecipeManagement.Databases;
 using Serilog;
 using RecipeManagement.Extensions.Application;
 using RecipeManagement.Extensions.Host;
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Host.AddLoggingConfiguration(builder.Environment);
 
 builder.ConfigureServices();
+builder.Services.AddScoped<ApplicationDbContextInitializer>();
 var app = builder.Build();
 
 if (builder.Environment.IsDevelopment())
@@ -34,6 +36,13 @@ app.UseEndpoints(endpoints =>
     endpoints.MapHealthChecks("/api/health");
     endpoints.MapControllers();
 });
+
+using (var scope = app.Services.CreateScope())
+{
+    var initializer = scope.ServiceProvider.GetRequiredService<ApplicationDbContextInitializer>();
+    await initializer.InitializeAsync();
+    // await initializer.SeedAsync();
+}
 
 app.UseSwaggerExtension();
 
