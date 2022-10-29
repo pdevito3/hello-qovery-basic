@@ -1,0 +1,49 @@
+DomainName: forDockerBasic
+BoundedContexts:
+- ProjectName: RecipeManagement
+  Port: 5265
+  DbContext:
+   ContextName: RecipesDbContext
+   DatabaseName: RecipeManagement
+   Provider: postgres
+   NamingConvention: class
+  Entities:
+  - Name: Recipe
+    Features:
+    - Type: GetList
+    - Type: GetRecord
+    - Type: AddRecord
+    - Type: UpdateRecord
+    - Type: DeleteRecord
+    Properties:
+    - Name: Title
+      Type: string
+      CanFilter: true
+      CanSort: true
+    - Name: Directions
+      Type: string
+      CanFilter: true
+      CanSort: true
+    - Name: RecipeSourceLink
+      Type: string
+      CanFilter: true
+      CanSort: true
+    - Name: Description
+      Type: string
+      CanFilter: true
+      CanSort: true
+    - Name: ImageLink
+      Type: string
+      CanFilter: true
+      CanSort: true
+    - Name: Visibility
+      SmartNames:
+      - Public
+      - Friends Only
+      - Private
+      CanFilter: true
+      CanSort: true
+    - Name: DateOfOrigin
+      Type: DateOnly?
+      CanFilter: true
+      CanSort: true
